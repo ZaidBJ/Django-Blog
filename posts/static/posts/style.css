@@ -1,0 +1,49 @@
+
+
+#wid{
+    width: 25%;
+}
+
+#img{
+    width:80px;
+    height:70px;
+    border-radius: 50%;
+}
+
+.images{
+    width: 400px;
+    height: 400px;
+    margin-left: 300px;
+}
+
+#bold{
+    font-size: 25px;
+    margin-left: 370px;
+
+}
+
+
+
+
+
+#me{
+    margin-left: 400px;
+}
+
+#auth{
+    font-size: 14px;
+    color:dimgrey;
+    margin-left: 30px;
+}
+
+.para{
+    width: 300px;
+    margin-left: 350px;
+    color: grey;
+}
+
+
+
+#pages{
+    padding-left:  450px;
+}

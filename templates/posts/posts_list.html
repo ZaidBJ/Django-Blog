@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    {% load static %}
+ <link rel="stylesheet" href="{% static 'posts/style.css' %}"  type="text/css" >
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+
+
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/posts/create">New Post</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/logout">logout</a></li>
+
+    </ul>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+    <img id="img" src="{{ author.image.url }}">
+<br>
+
+
+
+
+
+
+
+
+{% for user in users %}
+<a id="bold" href="/posts/{{ user.slug }}">{{ user.title }}</a>
+    <label id="auth">{{ user.author }}</label>
+<br>
+    <br>
+    {% if user.description|length > 30 %}
+<label class="para" >{{ user.description|slice:"0:150" }}......</label>
+    {% endif %}
+    {% if user.description|length < 30 %}
+    <label class="para" >{{ user.description|slice:"0:30" }}......</label>
+    {% endif %}
+    <br>
+    <br>
+<img class="images" src="{{ user.image.url}}">
+    <br>
+    <br>
+    <br>
+
+
+
+{% endfor %}
+
+<div id="pages">
+
+{% if users.has_other_pages %}
+  <ul class="pagination">
+    {% if users.has_previous %}
+      <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in users.paginator.page_range %}
+      {% if users.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if users.has_next %}
+      <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+
+{% endif %}
+
+</div>
+
+
+
+
+
+
+
+</body>
+</html>
